@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Loja extends Empresa {
     public List<Jogo> jogosDisponiveis;
 
-    public Loja(String nome) {
-        super(nome);
+    public Loja(String nome, String cnpj) {
+        super(nome, cnpj);
         jogosDisponiveis = new ArrayList<Jogo>();
     }
 
