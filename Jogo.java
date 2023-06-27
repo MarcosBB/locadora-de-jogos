@@ -39,10 +39,10 @@ public class Jogo {
     private int quantidadeDeJogadores;
     private float preco;
     private int copiasVendidas;
-    // private Empresa produtora;
+    private Empresa produtora;
 
     public Jogo(String nome, Calendar dataDeLancamento, Genero genero, Plataforma plataforma,
-            int classificacaoIndicativa, int quantidadeDeJogadores, int preco) {
+            int classificacaoIndicativa, int quantidadeDeJogadores, int preco, Empresa produtora) {
         this.nome = nome;
         this.dataDeLancamento = dataDeLancamento;
         this.genero = genero;
@@ -51,6 +51,11 @@ public class Jogo {
         this.quantidadeDeJogadores = quantidadeDeJogadores;
         this.preco = preco;
         this.copiasVendidas = 0;
+        this.produtora = produtora;
+    }
+
+    public Empresa getProdutora() {
+        return produtora;
     }
 
     public String getNome() {
@@ -69,8 +74,8 @@ public class Jogo {
         this.dataDeLancamento = dataDeLancamento;
     }
 
-    public Genero getGenero() {
-        return this.genero;
+    public String getGenero() {
+        return this.genero.getNome();
     }
 
     public void setGenero(Genero genero) {

@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Produtora extends Empresa {
     String name;
@@ -10,9 +11,26 @@ public class Produtora extends Empresa {
         jogosCriados = new ArrayList<Jogo>();
     }
 
-    // FUNÇÃO IMCOMPLETA VAI DAR MERDA, PRECISAR SER AJEITADA PRA COMBINAR COM A
-    // CLASSE JOGO
-    public void CriarJogo(String nomeDoJogo, Jogo.Genero genero) {
-        jogosCriados.add(new Jogo(nomeDoJogo, genero, this));
+    public List<Jogo> getJogosCriados() {
+        return jogosCriados;
+    }
+
+    public void cadastraJogo(
+            String nome,
+            Calendar dataDeLancamento,
+            Jogo.Genero genero,
+            Jogo.Plataforma plataforma,
+            int classificacaoIndicativa,
+            int quantidadeDeJogadores,
+            int preco) {
+        jogosCriados.add(new Jogo(
+                nome,
+                dataDeLancamento,
+                genero,
+                plataforma,
+                classificacaoIndicativa,
+                quantidadeDeJogadores,
+                preco,
+                this));
     }
 }
