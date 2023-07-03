@@ -10,9 +10,11 @@ public class Produtora extends Empresa {
         jogosCriados = new ArrayList<Jogo>();
     }
 
-    // FUNÇÃO IMCOMPLETA VAI DAR MERDA, PRECISAR SER AJEITADA PRA COMBINAR COM A
-    // CLASSE JOGO
-    public void CriarJogo(String nomeDoJogo, Jogo.Genero genero) {
-        jogosCriados.add(new Jogo(nomeDoJogo, genero, this));
+    public void addJogo(Jogo jogo) {
+        jogosCriados.add(jogo);
+    }
+
+    public String getNome() {
+        return this.name;
     }
 }

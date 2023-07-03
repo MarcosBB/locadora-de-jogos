@@ -9,4 +9,8 @@ public abstract class Empresa {
     public void recebeDinheiro(double valorGanho) {
         this.Caixa += valorGanho;
     }
+
+    public double getCaixa() {
+        return this.Caixa;
+    }
 }

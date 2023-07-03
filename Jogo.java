@@ -39,7 +39,7 @@ public class Jogo {
     private int quantidadeDeJogadores;
     private float preco;
     private int copiasVendidas;
-    // private Empresa produtora;
+    private Empresa produtora;
 
     public Jogo(String nome, Calendar dataDeLancamento, Genero genero, Plataforma plataforma,
             int classificacaoIndicativa, int quantidadeDeJogadores, int preco) {
@@ -117,4 +117,11 @@ public class Jogo {
         this.preco = preco;
     }
 
+    public Empresa getProdutora() {
+        return this.produtora;
+    }
+
+    public void setProdutora(Produtora produtora) {
+        this.produtora = produtora;
+    }
 }
