@@ -5,6 +5,7 @@ public class Loja extends Empresa {
     public List<Jogo> jogosDisponiveis;
     public List<Produtora> listaProdutoras;
 
+<<<<<<< Updated upstream
     public Loja(String nome) {
         super(nome);
         jogosDisponiveis = new ArrayList<Jogo>();
@@ -26,6 +27,16 @@ public class Loja extends Empresa {
                 jogo.setProdutora(produtora);
                 break;
             }
+=======
+    public Loja(String nome, float cnpj) {
+        super(nome, cnpj);
+        jogosDisponiveis = new ArrayList<Jogo>();
+    }
+
+    public boolean adicionarJogosProdutora(Produtora produtora) {
+        for (Jogo jogo : produtora.getJogos()) {
+            jogosDisponiveis.add(jogo);
+>>>>>>> Stashed changes
         }
     }
 
@@ -38,7 +49,11 @@ public class Loja extends Empresa {
         }
     }
 
+<<<<<<< Updated upstream
     public List<Jogo> Busca(Jogo.Genero genero) {
+=======
+    public List<Jogo> Busca(String genero) {
+>>>>>>> Stashed changes
         List<Jogo> jogosFiltrados = new ArrayList<Jogo>();
         for (Jogo jogo : jogosDisponiveis) {
             if (jogo.getGenero() == genero) {
@@ -48,6 +63,7 @@ public class Loja extends Empresa {
         return jogosFiltrados;
     }
 
+<<<<<<< Updated upstream
     public List<Jogo> Busca(Jogo.Plataforma plataforma) {
         List<Jogo> jogosFiltrados = new ArrayList<Jogo>();
         for (Jogo jogo : jogosDisponiveis) {
@@ -58,6 +74,8 @@ public class Loja extends Empresa {
         return jogosFiltrados;
     }
 
+=======
+>>>>>>> Stashed changes
     public List<Jogo> Busca(float preco) {
         List<Jogo> jogosFiltrados = new ArrayList<Jogo>();
         for (Jogo jogo : jogosDisponiveis) {
@@ -88,10 +106,15 @@ public class Loja extends Empresa {
         List<Jogo> carrinhoAtual = usuario.getCarrinho();
         if (usuario.getCarteira() >= calcularValorCarrinho(carrinhoAtual)) {
             for (Jogo jogo : carrinhoAtual) {
+<<<<<<< Updated upstream
                 jogo.iterarCopiasVendidas();
                 this.recebeDinheiro(jogo.getPreco() * 4 / 5);
                 jogo.getProdutora().recebeDinheiro(jogo.getPreco() * 1 / 5); // FUNCAO GETPRODUTORA NAO EXISTE TEM QUE
                                                                              // IMPLEMENTAR // IMPLEMENTAR
+=======
+                this.recebeDinheiro(jogo.getPreco() * 4 / 5);
+                jogo.getProdutora().recebeDinheiro(jogo.getPreco() * 1 / 5);
+>>>>>>> Stashed changes
                 usuario.adicionarJogoBiblioteca(jogo);
             }
         } else {

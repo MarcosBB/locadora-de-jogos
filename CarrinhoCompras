@@ -1,0 +1,29 @@
+class CarrinhoCompras implements Carrinho {
+    private List<Jogo> jogos;
+
+    public CarrinhoCompras() {
+        jogos = new ArrayList<>();
+    }
+
+    public void adicionarJogo(Jogo jogo) {
+        jogos.add(jogo);
+        System.out.println(jogo.getNome() + " adicionado ao carrinho.");
+    }
+
+    public void removerJogo(Jogo jogo) {
+        jogos.remove(jogo);
+        System.out.println(jogo.getNome() + " removido do carrinho.");
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (Jogo jogo : jogos) {
+            total += jogo.getPreco();
+        }
+        return total;
+    }
+
+    public void finalizarCompra() {
+        System.out.println("Compra finalizada. Valor total: R$ " + calcularTotal());
+    }
+}

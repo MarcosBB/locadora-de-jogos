@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Usuario {
+<<<<<<< Updated upstream
     public List<Jogo> Carrinho;
     public List<Jogo> Biblioteca;
     private double carteira;
@@ -25,21 +26,54 @@ public class Usuario {
     }
 
     public void setCarrinho(List<Jogo> carrinho) {
+=======
+    CarrinhoCompras Carrinho;
+    public List<Jogo> Biblioteca;
+    private int carteira;
+
+    public Usuario() {
+        Carrinho = new Carrinho();
+        Biblioteca = new ArrayList<Jogo>();
+        carteira = 0;
+    }
+
+    public void addDinheiroCarteira(int dinheiro) {
+        this.carteira += dinheiro;
+    }
+
+    public void takeDinheiroCarteira(int dinheiro) {
+        this.carteira -= dinheiro;
+    }
+
+    public int getCarteira() {
+        return this.carteira;
+    }
+
+    /*public void setCarrinho(List<Jogo> carrinho) {
+>>>>>>> Stashed changes
         this.Carrinho = carrinho;
     }
 
     public List<Jogo> getCarrinho() {
         return this.Carrinho;
-    }
+    }*/
 
     public List<Jogo> getBiblioteca() {
         return this.Biblioteca;
     }
 
+<<<<<<< Updated upstream
+    public List<Jogo> getBiblioteca() {
+        return this.Biblioteca;
+    }
+
+=======
+>>>>>>> Stashed changes
     public void adicionarJogoBiblioteca(Jogo jogo) {
         this.Biblioteca.add(jogo);
     }
 
+<<<<<<< Updated upstream
     public void adicionarJogoCarrinho(Jogo jogo) {
         this.Carrinho.add(jogo);
     }
@@ -58,4 +92,10 @@ public class Usuario {
         }
     }
 
+=======
+    /*public void adicionarJogoCarrinho(Jogo jogo) {
+        this.Carrinho.add(jogo);
+    }
+*/
+>>>>>>> Stashed changes
 }

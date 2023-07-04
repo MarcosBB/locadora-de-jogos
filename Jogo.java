@@ -1,6 +1,7 @@
 import java.util.Calendar;
 
 public class Jogo {
+<<<<<<< Updated upstream
     public enum Genero {
         ACAO("Ação"),
         AVENTURA("Aventura"),
@@ -51,12 +52,26 @@ public class Jogo {
         this.quantidadeDeJogadores = quantidadeDeJogadores;
         this.preco = preco;
         this.copiasVendidas = 0;
+=======
+
+    private String nome;
+    private String genero;
+    private float preco;
+    private Produtora produtora;
+
+    public Jogo(String nome, String genero, int preco, Produtora produtora) {
+        this.nome = nome;
+        this.genero = genero;
+        this.preco = preco;
+        this.produtora = produtora;
+>>>>>>> Stashed changes
     }
 
     public String getNome() {
         return this.nome;
     }
 
+<<<<<<< Updated upstream
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -109,6 +124,12 @@ public class Jogo {
         this.copiasVendidas += 1;
     }
 
+=======
+    public String getGenero() {
+        return this.genero;
+    }
+
+>>>>>>> Stashed changes
     public float getPreco() {
         return this.preco;
     }
