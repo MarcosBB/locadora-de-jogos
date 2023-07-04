@@ -4,7 +4,11 @@ public abstract class Empresa {
     private double Caixa = 0.00;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public Empresa(String nome) {
+=======
+    public Empresa(String nome, float cnpj) {
+>>>>>>> Stashed changes
 =======
     public Empresa(String nome, float cnpj) {
 >>>>>>> Stashed changes
@@ -13,7 +17,11 @@ public abstract class Empresa {
     }
 
     public void recebeDinheiro(double valorGanho) {
+<<<<<<< Updated upstream
         this.Caixa += valorGanho;
+=======
+        this.Caixa = Caixa + valorGanho;
+>>>>>>> Stashed changes
     }
 
     public double getCaixa() {
