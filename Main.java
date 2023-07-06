@@ -34,13 +34,13 @@ public class Main {
 
         else if (s == "Adicionar ao carrinho") {
             System.out.println("Digite o número do jogo:");
-            u.adicionarJogoNoCarrinho(l.VerJogo(InputUtil.positiveInteger(scanner)));
+            u.adicionarJogoNoCarrinho(l.VerJogo(InputUtil.positiveInteger(scanner) - 1));
         }
 
         else if (s == "Retirar do carrinho") {
             System.out.println("Digite o número do jogo:");
-            u.adicionarJogoNoCarrinho(
-                    l.VerJogo(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner)));
+            u.removerJogoNoCarrinho(
+                    l.VerJogo(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
         }
     }
 
@@ -175,6 +175,7 @@ public class Main {
             }
 
             if (PAGE == Page.BASKET) {
+                title("Carrinho");
                 String chosen = options(List.of("Finalizar compra", "Retirar do carrinho", "Voltar"), scanner);
                 if (chosen == "Finalizar compra") {
                     user.finalizarCompra(loja);
