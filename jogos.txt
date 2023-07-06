@@ -1,6 +1,84 @@
 Purple Haze
-Action
+Acao
 49.99
 God of War 3
-Action
+Acao
 99.99
+Sea of Thieves
+Aventura
+99.99
+Grand Theft Auto V
+Aventura
+109.99
+Cyberpunk 2077
+Aventura
+199.99
+Stardew Valley
+Casual
+24.99
+The Sims 4
+Casual
+19.99
+Project Zomboid
+Simulacao
+49.99
+RimWorld
+Simulacao
+49.99
+Sid Meyer's Civilization VI
+Simulacao
+74.99
+Jurassic World
+Simulacao
+77.49
+Dino Hazard
+Aventura
+39.99
+Persona 3
+JRPG
+59.99
+Persona 4
+JRPG
+69.99
+Persona 5
+JRPG
+199.99
+Ni No Kuni
+JRPG
+149.99
+Monster Hunter: Rise
+JRPG
+149.99
+Yakuza: 0
+JRPG
+99.99
+Yakuza: Like a Dragon
+JRPG
+179.99
+Elden Ring
+JRPG
+179.99
+Octopath Traveler
+JRPG
+179.99
+Baldur's Gate 3
+RPG
+99.99
+Minecraft
+Aventura
+69.99
+CupHead
+Plataforma
+24.99
+Outer Wilds
+Aventura
+39.99
+Rain World
+Aventura
+29.99
+Celeste
+Plataforma
+36.99
+A Hat in Time
+Plataforma
+25.99
