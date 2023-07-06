@@ -17,28 +17,29 @@ public class Main {
     private static void input(String s, Usuario u, Loja l, Scanner scanner) {
         if (s == "Adicionar dinheiro") {
             System.out.println("Quanto você quer adicionar ?");
-            u.addDinheiroCarteira(scanner.nextInt());
+            u.addDinheiroCarteira(InputUtil.positiveFloat(scanner));
             System.out.println("Carteira atualizada, agora você tem " + u.getCarteira() + " dinheiros.");
         }
 
         else if (s == "Gênero") {
-            System.out.println("Digite uma das opções de gênero a seguir. {Ação, Aventura, Tiro}");
+            System.out.println("Digite uma das opções de gênero a seguir: {Ação, Aventura, Tiro}");
             showGameList(l.Busca(scanner.nextLine()));
         }
 
         else if (s == "Preço máximo") {
-            System.out.println("Digite um valor máximo de preço.");
-            showGameList(l.Busca(scanner.nextInt()));
+            System.out.println("Digite um valor máximo de preço:");
+            showGameList(l.Busca(InputUtil.positiveFloat(scanner)));
         }
 
         else if (s == "Adicionar ao carrinho") {
-            System.out.println("Digite o número do jogo.");
-            u.adicionarJogoNoCarrinho(l.VerJogo(scanner.nextInt()));
+            System.out.println("Digite o número do jogo:");
+            u.adicionarJogoNoCarrinho(l.VerJogo(InputUtil.positiveInteger(scanner)));
         }
 
         else if (s == "Retirar do carrinho") {
-            System.out.println("Digite o número do jogo.");
-            u.adicionarJogoNoCarrinho(l.VerJogo(scanner.nextInt()));
+            System.out.println("Digite o número do jogo:");
+            u.adicionarJogoNoCarrinho(
+                    l.VerJogo(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner)));
         }
     }
 
@@ -52,9 +53,7 @@ public class Main {
         for (int i = 0; i < options.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + options.get(i));
         }
-
-        int selection = scanner.nextInt() - 1;
-
+        int selection = InputUtil.integerInRange(1, options.size(), scanner) - 1;
         return options.get(selection);
     }
 
