@@ -2,59 +2,59 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Usuario {
-    private CarrinhoCompras Carrinho;
-    public List<Joguin> Biblioteca;
-    private int carteira;
+    private CarrinhoCompras carrinho;
+    public List<Joguin> biblioteca;
+    private float carteira;
 
     public Usuario() {
-        this.Carrinho = new CarrinhoCompras();
-        Biblioteca = new ArrayList<Joguin>();
+        this.carrinho = new CarrinhoCompras();
+        biblioteca = new ArrayList<Joguin>();
         carteira = 0;
     }
 
-    public void addDinheiroCarteira(int dinheiro) {
+    public void addDinheiroCarteira(float dinheiro) {
         this.carteira += dinheiro;
     }
 
-    public void takeDinheiroCarteira(int dinheiro) {
+    public void takeDinheiroCarteira(float dinheiro) {
         this.carteira -= dinheiro;
     }
 
-    public int getCarteira() {
+    public float getCarteira() {
         return this.carteira;
     }
 
     public void adicionarJogoNoCarrinho(Joguin jogo) {
-        Carrinho.adicionarJogo(jogo);
+        carrinho.adicionarJogo(jogo);
     }
 
     public void removerJogoNoCarrinho(Joguin jogo) {
-        Carrinho.removerJogo(jogo);
+        carrinho.removerJogo(jogo);
     }
 
     public List<Joguin> mostrarJogosNoCarrinho() {
-        return Carrinho.jogosQueTem();
+        return carrinho.jogosQueTem();
     }
 
     public double calcularTotal() {
-        return Carrinho.calcularTotal();
+        return carrinho.calcularTotal();
     }
 
     public void finalizarCompra(Loja loja) {
-        if(carteira >= Carrinho.calcularTotal()) {
-            loja.compraRealizada(Carrinho.jogosQueTem());
-            Carrinho.finalizarCompra();
-        }
-        else {
-            System.out.println("Você não tem dinheiro na carteira para comprar todos os jogos. Retire algo do carrinho ou adicione mais dinheiro.");
+        if (carteira >= carrinho.calcularTotal()) {
+            loja.compraRealizada(carrinho.jogosQueTem());
+            carrinho.finalizarCompra();
+        } else {
+            System.out.println(
+                    "Você não tem dinheiro na carteira para comprar todos os jogos. Retire algo do carrinho ou adicione mais dinheiro.");
         }
     }
 
     public List<Joguin> getBiblioteca() {
-        return this.Biblioteca;
+        return this.biblioteca;
     }
 
     public void adicionarJogoBiblioteca(Joguin jogo) {
-        this.Biblioteca.add(jogo);
+        this.biblioteca.add(jogo);
     }
 }
