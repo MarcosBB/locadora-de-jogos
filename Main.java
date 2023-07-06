@@ -78,8 +78,7 @@ public class Main {
     }
 
     public static void main(String args[]) {
-
-                Produtora produtora = new Produtora("Peter games", 0000);
+        Produtora produtora = new Produtora("Peter games", 0000);
 
         try {
             Scanner txtscanner = new Scanner(new File("jogos.txt"));
@@ -108,6 +107,8 @@ public class Main {
 
         Usuario user = new Usuario();
         Loja loja = new Loja("Loja LP2", 711230911);
+
+        loja.adicionarJogosProdutora(produtora);
 
         while (RUNNING == true) {
 
