@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
+import java.io.File;
 
 public class Main {
     private static void showGameList(List<Joguin> j) {
@@ -77,6 +78,30 @@ public class Main {
     }
 
     public static void main(String args[]) {
+
+                Produtora produtora = new Produtora("Peter games", 0000);
+
+        try {
+            Scanner txtscanner = new Scanner(new File("jogos.txt"));
+
+            while (txtscanner.hasNextLine()) {
+                String nome = txtscanner.nextLine();
+                String genero = txtscanner.nextLine();
+                String preco = txtscanner.nextLine();
+
+                System.out.println(nome + genero + preco);
+
+                try {
+                    produtora.criarJogo(nome, genero, Float.parseFloat(preco));
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         boolean RUNNING = true;
         Page PAGE = Page.HOME;
         Scanner scanner = new Scanner(System.in);
