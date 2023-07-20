@@ -17,7 +17,36 @@ public class Produtora extends Empresa {
 
     public void criarJogo(String nomeDoJogo, String genero, float preco)
     {
-        jogosCriados.add(new Joguin(nomeDoJogo, genero, preco, this));
+        switch(genero)
+        {
+            case "Acao":
+            jogosCriados.add(new JogoAcao(nomeDoJogo, genero, preco, this));
+            break;
+
+            case "Aventura":
+            jogosCriados.add(new JogoAventura(nomeDoJogo, genero, preco, this));
+            break;
+
+            case "Casual":
+            jogosCriados.add(new JogoCasual(nomeDoJogo, genero, preco, this));
+            break;
+
+            case "Simulacao":
+            jogosCriados.add(new JogoSimulação(nomeDoJogo, genero, preco, this));
+            break;
+
+            case "RPG":
+            jogosCriados.add(new JogoRPG(nomeDoJogo, genero, preco, this));
+            break;
+
+            case "Plataforma":
+            jogosCriados.add(new JogoPlataforma(nomeDoJogo, genero, preco, this));
+            break;
+
+            default:
+            break;
+        }
+        
     }
 
     public List<Joguin> getJogos()

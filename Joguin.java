@@ -1,4 +1,4 @@
-public class Joguin{
+public abstract class Joguin{
     private String nome;
     private String genero;
     private float preco;
@@ -42,4 +42,6 @@ public class Joguin{
     public void setProdutora(Produtora produtora) {
         this.produtora = produtora;
     }
+
+    public abstract void jogar();
 }

@@ -23,7 +23,7 @@ public class Main {
         }
 
         else if (s == "Gênero") {
-            System.out.println("Digite uma das opções de gênero a seguir: \n {Acao, Aventura, Casual, Simulacao, JRPG, RPG, Plataforma}");
+            System.out.println("Digite uma das opções de gênero a seguir: \n {Acao, Aventura, Casual, Simulacao, RPG, Plataforma}");
             scanner.nextLine();
             showGameList(l.Busca(scanner.next()));
         }
@@ -46,6 +46,11 @@ public class Main {
             System.out.println("Digite o número do jogo:");
             u.removerJogoNoCarrinho(
                     u.mostrarJogosNoCarrinho().get(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
+        }
+
+        else if (s == "Jogar algum jogo") {
+            System.out.println("Digite o número do jogo:");
+            u.getBiblioteca().get((InputUtil.integerInRange(1, u.getBiblioteca().size(), scanner) - 1)).jogar();
         }
     }
 
@@ -79,7 +84,7 @@ public class Main {
      */
 
     public enum Page {
-        HOME, ACCOUNT, STORE, BASKET, GAMEFILTER, WANNABUY
+        HOME, ACCOUNT, STORE, BASKET, GAMEFILTER, WANNABUY, GAMES
     }
 
     public static void main(String args[]) {
@@ -134,8 +139,11 @@ public class Main {
             if (PAGE == Page.ACCOUNT) {
                 title("Essa é sua conta");
                 String chosen = options(List.of("Ver meus jogos", "Adicionar dinheiro", "Voltar"), scanner);
-                if (chosen == "Ver meus jogos")
+                if (chosen == "Ver meus jogos") 
+                {
                     showGameList(user.getBiblioteca());
+                    PAGE = Page.GAMES;
+                }
                 else if (chosen == "Adicionar dinheiro")
                     input(chosen, user, loja, scanner);
                 else if (chosen == "Voltar")
@@ -145,7 +153,7 @@ public class Main {
             if (PAGE == Page.STORE) {
                 title("Loja de jogos LP2");
                 String chosen = options(List.of("Ver jogos", "Ver Carrinho", "Voltar"), scanner);
-                if (chosen == "Ver jogos")
+                if (chosen == "Ver jogos") 
                     PAGE = Page.GAMEFILTER;
                 else if (chosen == "Ver Carrinho") {
                     showGameList(user.mostrarJogosNoCarrinho());
@@ -192,7 +200,14 @@ public class Main {
                     PAGE = Page.STORE;
             }
 
+            if (PAGE == Page.GAMES) {
+                title("Seus jogos");
+                String chosen = options(List.of("Jogar algum jogo", "Voltar"), scanner);
+                if (chosen == "Jogar algum jogo") 
+                    input(chosen, user, loja, scanner);
+                else if (chosen == "Voltar")
+                    PAGE = Page.ACCOUNT;
+            }
         }
-
     }
 }

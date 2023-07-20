@@ -1,4 +1,4 @@
-public abstract class Empresa {
+public class Empresa {
     public String nome;
     public float cnpj;
     private double Caixa = 0.00;
