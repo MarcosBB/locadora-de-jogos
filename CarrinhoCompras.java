@@ -31,10 +31,7 @@ class CarrinhoCompras implements Carrinh{
     }
 
     public void finalizarCompra() {
-        System.out.println("Compra finalizada.");
-        for (Joguin j : jogos)
-        {
-            this.jogos.remove(j);
-        }
+        this.jogos.clear();
+        System.out.println("Compra finalizada. Agora você tem" + jogos.size() + " itens no carrinho.");
     }
 }

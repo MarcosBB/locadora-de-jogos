@@ -23,8 +23,9 @@ public class Main {
         }
 
         else if (s == "Gênero") {
-            System.out.println("Digite uma das opções de gênero a seguir: {Acao, Aventura, Casual, Simulacao, JRPG, RPG, Plataforma}");
-            showGameList(l.Busca(scanner.nextLine()));
+            System.out.println("Digite uma das opções de gênero a seguir: \n {Acao, Aventura, Casual, Simulacao, JRPG, RPG, Plataforma}");
+            scanner.nextLine();
+            showGameList(l.Busca(scanner.next()));
         }
 
         else if (s == "Preço máximo") {

@@ -43,6 +43,10 @@ public class Usuario {
     public void finalizarCompra(Loja loja) {
         if (carteira >= carrinho.calcularTotal()) {
             loja.compraRealizada(carrinho.jogosQueTem());
+            for (Joguin jogo : carrinho.jogosQueTem())
+            {
+                adicionarJogoBiblioteca(jogo);
+            }
             carrinho.finalizarCompra();
         } else {
             System.out.println(
