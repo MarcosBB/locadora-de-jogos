@@ -1,8 +1,12 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Loja extends Empresa {
     public List<Joguin> jogosDisponiveis;
+
+    public Map<Integer, Joguin> jogosFiltrados = new HashMap<Integer, Joguin>();
     //public List<Produtora> listaProdutoras;
 
     public Loja(String nome, float cnpj) {
@@ -16,28 +20,38 @@ public class Loja extends Empresa {
         }
     }
 
-    public Joguin VerJogo(int i) {
-        return jogosDisponiveis.get(i);
-    }
-
     public List<Joguin> Busca(String genero) {
-        List<Joguin> jogosFiltrados = new ArrayList<Joguin>();
+        int i = 0;
+        jogosFiltrados.clear();
         for (Joguin jogo : jogosDisponiveis) {
             if (jogo.getGenero() == genero) {
-                jogosFiltrados.add(jogo);
+                jogosFiltrados.put(i, jogo);
+                i++;
             }
         }
-        return jogosFiltrados;
+        List<Joguin> list = new ArrayList<Joguin>(jogosFiltrados.values());
+        return list;
     }
 
     public List<Joguin> Busca(float preco) {
-        List<Joguin> jogosFiltrados = new ArrayList<Joguin>();
+        int i = 0;
+        jogosFiltrados.clear();
         for (Joguin jogo : jogosDisponiveis) {
             if (jogo.getPreco() <= preco) {
-                jogosFiltrados.add(jogo);
+                jogosFiltrados.put(i, jogo);
+                i++;
             }
         }
-        return jogosFiltrados;
+        List<Joguin> list = new ArrayList<Joguin>(jogosFiltrados.values());
+        return list;
+    }
+
+    public Joguin EscolherJogo(int i) {
+        return jogosFiltrados.get(i);
+    }
+
+    public int NumeroDeOpcoes() {
+        return jogosFiltrados.size();
     }
 
     public void compraRealizada(List<Joguin> jogos) {

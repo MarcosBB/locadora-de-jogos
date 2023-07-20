@@ -23,7 +23,7 @@ public class Main {
         }
 
         else if (s == "Gênero") {
-            System.out.println("Digite uma das opções de gênero a seguir: {Ação, Aventura, Tiro}");
+            System.out.println("Digite uma das opções de gênero a seguir: {Acao, Aventura, Casual, Simulacao, JRPG, RPG, Plataforma}");
             showGameList(l.Busca(scanner.nextLine()));
         }
 
@@ -34,13 +34,17 @@ public class Main {
 
         else if (s == "Adicionar ao carrinho") {
             System.out.println("Digite o número do jogo:");
-            u.adicionarJogoNoCarrinho(l.VerJogo(InputUtil.positiveInteger(scanner) - 1));
+            int x = InputUtil.positiveInteger(scanner) - 1;
+            if(x < l.NumeroDeOpcoes())
+            {
+                u.adicionarJogoNoCarrinho(l.EscolherJogo(x));
+            }
         }
 
         else if (s == "Retirar do carrinho") {
             System.out.println("Digite o número do jogo:");
             u.removerJogoNoCarrinho(
-                    l.VerJogo(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
+                    u.mostrarJogosNoCarrinho().get(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
         }
     }
 
@@ -88,7 +92,7 @@ public class Main {
                 String genero = txtscanner.nextLine();
                 String preco = txtscanner.nextLine();
 
-                System.out.println(nome + genero + preco);
+                //System.out.println(nome + genero + preco);
 
                 try {
                     produtora.criarJogo(nome, genero, Float.parseFloat(preco));
