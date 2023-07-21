@@ -7,7 +7,7 @@ public class Loja extends Empresa {
     public List<Joguin> jogosDisponiveis;
 
     public Map<Integer, Joguin> jogosFiltrados = new HashMap<Integer, Joguin>();
-    //public List<Produtora> listaProdutoras;
+    // public List<Produtora> listaProdutoras;
 
     public Loja(String nome, float cnpj) {
         super(nome, cnpj);
@@ -18,6 +18,10 @@ public class Loja extends Empresa {
         for (Joguin jogo : produtora.getJogos()) {
             jogosDisponiveis.add(jogo);
         }
+    }
+
+    public List<Joguin> getJogosDisponiveis() {
+        return jogosDisponiveis;
     }
 
     public List<Joguin> Busca(String genero) {
