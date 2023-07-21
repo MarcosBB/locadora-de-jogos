@@ -39,7 +39,7 @@ public class MenuGUI extends JFrame {
 
     private void showCarrinho() {
         if (carrinhoGUI == null) {
-            carrinhoGUI = new CarrinhoGUI(usuario);
+            carrinhoGUI = new CarrinhoGUI(usuario, loja, usuarioGUI);
         } else {
             carrinhoGUI.updateCartContent();
         }
@@ -49,6 +49,8 @@ public class MenuGUI extends JFrame {
     private void showUsuario() {
         if (usuarioGUI == null) {
             usuarioGUI = new UsuarioGUI(usuario);
+        } else {
+            usuarioGUI.updateUsuarioContent();
         }
         usuarioGUI.setVisible(true);
 

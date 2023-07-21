@@ -46,7 +46,7 @@ public class Usuario {
         this.carteira += dinheiro;
     }
 
-    public void takeDinheiroCarteira(float dinheiro) {
+    public void takeDinheiroCarteira(double dinheiro) {
         this.carteira -= dinheiro;
     }
 
@@ -76,9 +76,10 @@ public class Usuario {
             for (Joguin jogo : carrinho.jogosQueTem()) {
                 adicionarJogoBiblioteca(jogo);
             }
+            takeDinheiroCarteira(carrinho.calcularTotal());
             carrinho.finalizarCompra();
         } else {
-            System.out.println(
+            throw new IllegalArgumentException(
                     "Você não tem dinheiro na carteira para comprar todos os jogos. Retire algo do carrinho ou adicione mais dinheiro.");
         }
     }

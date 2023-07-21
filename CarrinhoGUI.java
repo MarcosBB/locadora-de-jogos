@@ -13,7 +13,7 @@ public class CarrinhoGUI extends JFrame {
     private DefaultTableModel model;
     private Usuario usuario;
 
-    public CarrinhoGUI(Usuario usuario) {
+    public CarrinhoGUI(Usuario usuario, Loja loja, UsuarioGUI usuarioGUI) {
         this.usuario = usuario;
 
         setTitle("Carrinho de Compras");
@@ -35,8 +35,15 @@ public class CarrinhoGUI extends JFrame {
         // Create the button to finalize the purchase
         JButton btnFinalizarCompra = new JButton("Finalizar Compra");
         btnFinalizarCompra.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Compra finalizada com sucesso!");
-            dispose(); // Close the cart window after purchase is completed
+            try {
+                usuario.finalizarCompra(loja);
+                usuarioGUI.updateUsuarioContent();
+                JOptionPane.showMessageDialog(this, "Compra finalizada com sucesso!");
+                dispose();
+            } catch (IllegalArgumentException error) {
+                JOptionPane.showMessageDialog(this, "Erro ao finalizar compra!\nDinheiro insuficiente...");
+                return;
+            }
         });
 
         bottomPanel.add(btnFinalizarCompra);
@@ -106,9 +113,9 @@ public class CarrinhoGUI extends JFrame {
             if (isPushed) {
                 Joguin jogo = usuario.mostrarJogosNoCarrinho().get(selectedRow);
                 usuario.removerJogoNoCarrinho(jogo);
+                // updateCartContent();
                 JOptionPane.showMessageDialog(CarrinhoGUI.this,
                         "Jogo \"" + jogo.getNome() + "\" removido do carrinho!");
-                // updateCartContent();
             }
             isPushed = false;
             return label;
