@@ -1,18 +1,17 @@
 import javax.swing.*;
 
-public class BaseGUI extends JFrame {
+public class MenuGUI extends JFrame {
     protected Usuario usuario;
     protected Loja loja;
     protected CarrinhoGUI carrinhoGUI;
+    protected UsuarioGUI usuarioGUI;
 
-    public BaseGUI(Usuario usuario, Loja loja) {
+    public MenuGUI(Usuario usuario, Loja loja) {
         this.usuario = usuario;
         this.loja = loja;
 
-        // Create the menu bar
         JMenuBar menuBar = new JMenuBar();
 
-        // Create User menu with sub-menu Biblioteca and Perfil
         JMenu userMenu = new JMenu("Usuário");
         JMenuItem bibliotecaMenuItem = new JMenuItem("Biblioteca");
         JMenuItem perfilMenuItem = new JMenuItem("Perfil");
@@ -20,7 +19,6 @@ public class BaseGUI extends JFrame {
         userMenu.add(perfilMenuItem);
         menuBar.add(userMenu);
 
-        // Create Store menu with sub-menu Catálogo and Carrinho
         JMenu storeMenu = new JMenu("Loja");
         JMenuItem BuscarJogoMenuItem = new JMenuItem("Buscar Jogo");
         JMenuItem carrinhoMenuItem = new JMenuItem("Carrinho");
@@ -28,21 +26,31 @@ public class BaseGUI extends JFrame {
         storeMenu.add(carrinhoMenuItem);
         menuBar.add(storeMenu);
 
-        // Add the menu bar to the frame
         setJMenuBar(menuBar);
 
         carrinhoMenuItem.addActionListener(e -> {
-            // Open the shopping cart page
             showCarrinho();
+        });
+
+        perfilMenuItem.addActionListener(e -> {
+            showUsuario();
         });
     }
 
     private void showCarrinho() {
         if (carrinhoGUI == null) {
-            carrinhoGUI = new CarrinhoGUI(usuario, loja);
+            carrinhoGUI = new CarrinhoGUI(usuario);
         } else {
             carrinhoGUI.updateCartContent();
         }
         carrinhoGUI.setVisible(true);
+    }
+
+    private void showUsuario() {
+        if (usuarioGUI == null) {
+            usuarioGUI = new UsuarioGUI(usuario);
+        }
+        usuarioGUI.setVisible(true);
+
     }
 }

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LojaGUI extends BaseGUI {
+public class LojaGUI extends MenuGUI {
     public LojaGUI(Loja loja, Usuario usuario) {
         super(usuario, loja);
         List<Joguin> jogosDisponiveis = loja.getJogosDisponiveis();

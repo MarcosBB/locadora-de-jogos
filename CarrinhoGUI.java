@@ -8,12 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.List;
 
-public class CarrinhoGUI extends BaseGUI {
+public class CarrinhoGUI extends JFrame {
     private JLabel lblTotal;
     private DefaultTableModel model;
+    private Usuario usuario;
 
-    public CarrinhoGUI(Usuario usuario, Loja loja) {
-        super(usuario, loja);
+    public CarrinhoGUI(Usuario usuario) {
+        this.usuario = usuario;
 
         setTitle("Carrinho de Compras");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

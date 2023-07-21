@@ -2,14 +2,44 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Usuario {
+    private String username;
+    private int idade;
+    private String email;
     private CarrinhoCompras carrinho;
     public List<Joguin> biblioteca;
     private float carteira;
 
-    public Usuario() {
+    public Usuario(String username, int idade, String email) {
+        this.username = username;
+        this.idade = idade;
+        this.email = email;
         this.carrinho = new CarrinhoCompras();
         biblioteca = new ArrayList<Joguin>();
         carteira = 0;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void addDinheiroCarteira(float dinheiro) {
@@ -43,8 +73,7 @@ public class Usuario {
     public void finalizarCompra(Loja loja) {
         if (carteira >= carrinho.calcularTotal()) {
             loja.compraRealizada(carrinho.jogosQueTem());
-            for (Joguin jogo : carrinho.jogosQueTem())
-            {
+            for (Joguin jogo : carrinho.jogosQueTem()) {
                 adicionarJogoBiblioteca(jogo);
             }
             carrinho.finalizarCompra();
