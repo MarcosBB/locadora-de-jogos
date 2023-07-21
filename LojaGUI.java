@@ -92,8 +92,5 @@ public class LojaGUI extends MenuGUI {
             return super.stopCellEditing();
         }
 
-        protected void fireEditingStopped() {
-            super.fireEditingStopped();
-        }
     }
 }

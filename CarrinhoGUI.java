@@ -119,9 +119,6 @@ public class CarrinhoGUI extends JFrame {
             return super.stopCellEditing();
         }
 
-        // protected void fireEditingStopped() {
-        // super.fireEditingStopped();
-        // }
     }
 
 }

@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UsuarioGUI extends JFrame {
+    private Usuario usuario;
+    private JLabel lblDinheiro;
+
     public UsuarioGUI(Usuario usuario) {
+        this.usuario = usuario;
         setTitle("Perfil do Usuário");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 200);
@@ -13,7 +17,7 @@ public class UsuarioGUI extends JFrame {
         JLabel lblNome = new JLabel("Nome: " + usuario.getUsername());
         JLabel lblIdade = new JLabel("Idade: " + usuario.getIdade());
         JLabel lblEmail = new JLabel("Email: " + usuario.getEmail());
-        JLabel lblDinheiro = new JLabel("Carteira: R$" + String.format("%.2f", usuario.getCarteira()));
+        lblDinheiro = new JLabel("Carteira: R$" + String.format("%.2f", usuario.getCarteira()));
 
         JTextField txtDinheiro = new JTextField(10);
         JButton btnAdicionarDinheiro = new JButton("Adicionar Dinheiro");
@@ -23,7 +27,7 @@ public class UsuarioGUI extends JFrame {
                 try {
                     float dinheiroAdicional = Float.parseFloat(txtDinheiro.getText());
                     usuario.addDinheiroCarteira(dinheiroAdicional);
-                    lblDinheiro.setText("Dinheiro: R$" + String.format("%.2f", usuario.getCarteira()));
+                    updateUsuarioContent();
                     txtDinheiro.setText("");
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(UsuarioGUI.this, "Digite um valor válido.", "Erro",
@@ -41,5 +45,10 @@ public class UsuarioGUI extends JFrame {
         panel.add(btnAdicionarDinheiro);
 
         add(panel);
+    }
+
+    public void updateUsuarioContent() {
+        if (lblDinheiro != null)
+            lblDinheiro.setText("Carteira: R$" + String.format("%.2f", usuario.getCarteira()));
     }
 }
