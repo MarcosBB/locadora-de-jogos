@@ -13,7 +13,7 @@ public class CarrinhoGUI extends JFrame {
     private DefaultTableModel model;
     private Usuario usuario;
 
-    public CarrinhoGUI(Usuario usuario, Loja loja, UsuarioGUI usuarioGUI) {
+    public CarrinhoGUI(Usuario usuario, Loja loja, UsuarioGUI usuarioGUI, BibliotecaGUI bibliotecaGUI) {
         this.usuario = usuario;
 
         setTitle("Carrinho de Compras");
@@ -38,6 +38,8 @@ public class CarrinhoGUI extends JFrame {
             try {
                 usuario.finalizarCompra(loja);
                 usuarioGUI.updateUsuarioContent();
+                bibliotecaGUI.updateBibliotecaContent();
+
                 JOptionPane.showMessageDialog(this, "Compra finalizada com sucesso!");
                 dispose();
             } catch (IllegalArgumentException error) {
@@ -113,7 +115,6 @@ public class CarrinhoGUI extends JFrame {
             if (isPushed) {
                 Joguin jogo = usuario.mostrarJogosNoCarrinho().get(selectedRow);
                 usuario.removerJogoNoCarrinho(jogo);
-                // updateCartContent();
                 JOptionPane.showMessageDialog(CarrinhoGUI.this,
                         "Jogo \"" + jogo.getNome() + "\" removido do carrinho!");
             }
@@ -124,6 +125,11 @@ public class CarrinhoGUI extends JFrame {
         public boolean stopCellEditing() {
             isPushed = false;
             return super.stopCellEditing();
+        }
+
+        protected void fireEditingStopped() {
+            super.fireEditingStopped();
+            updateCartContent();
         }
 
     }

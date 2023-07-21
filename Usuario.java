@@ -15,7 +15,7 @@ public class Usuario {
         this.email = email;
         this.carrinho = new CarrinhoCompras();
         biblioteca = new ArrayList<Joguin>();
-        carteira = 0;
+        carteira = 2000;
     }
 
     public String getUsername() {

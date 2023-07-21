@@ -5,6 +5,7 @@ public class MenuGUI extends JFrame {
     protected Loja loja;
     protected CarrinhoGUI carrinhoGUI;
     protected UsuarioGUI usuarioGUI;
+    protected BibliotecaGUI bibliotecaGUI;
 
     public MenuGUI(Usuario usuario, Loja loja) {
         this.usuario = usuario;
@@ -35,11 +36,15 @@ public class MenuGUI extends JFrame {
         perfilMenuItem.addActionListener(e -> {
             showUsuario();
         });
+
+        bibliotecaMenuItem.addActionListener(e -> {
+            showBiblioteca();
+        });
     }
 
     private void showCarrinho() {
         if (carrinhoGUI == null) {
-            carrinhoGUI = new CarrinhoGUI(usuario, loja, usuarioGUI);
+            carrinhoGUI = new CarrinhoGUI(usuario, loja, usuarioGUI, bibliotecaGUI);
         } else {
             carrinhoGUI.updateCartContent();
         }
@@ -54,5 +59,14 @@ public class MenuGUI extends JFrame {
         }
         usuarioGUI.setVisible(true);
 
+    }
+
+    private void showBiblioteca() {
+        if (bibliotecaGUI == null) {
+            bibliotecaGUI = new BibliotecaGUI(usuario);
+        } else {
+            bibliotecaGUI.updateBibliotecaContent();
+        }
+        bibliotecaGUI.setVisible(true);
     }
 }
