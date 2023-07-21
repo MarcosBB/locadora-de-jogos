@@ -12,12 +12,12 @@ public class BibliotecaGUI extends JFrame {
         this.usuario = usuario;
 
         setTitle("Loja de Jogos");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 300);
         setLocationRelativeTo(null);
 
         // Criação da tabela com os jogos
-        String[] colunas = { "Nome", "Genero", "Produtora" };
+        String[] colunas = { "Nome", "Genero" };
         model = new DefaultTableModel(colunas, 0);
 
         JTable table = new JTable(model);
@@ -31,7 +31,7 @@ public class BibliotecaGUI extends JFrame {
         model.setRowCount(0);
 
         for (Joguin jogo : biblioteca) {
-            model.addRow(new Object[] { jogo.getNome(), jogo.getGenero(), jogo.getProdutora().getNome() });
+            model.addRow(new Object[] { jogo.getNome(), jogo.getGenero() });
         }
     }
 }

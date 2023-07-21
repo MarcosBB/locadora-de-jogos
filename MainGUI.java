@@ -33,10 +33,13 @@ public class MainGUI {
             System.out.println(e);
         }
 
+        UsuarioGUI usuarioGUI = new UsuarioGUI(usuario);
+        BibliotecaGUI bibliotecaGUI = new BibliotecaGUI(usuario);
+        CarrinhoGUI carrinhoGUI = new CarrinhoGUI(usuario, loja, usuarioGUI, bibliotecaGUI);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LojaGUI(loja, usuario).setVisible(true);
+                new LojaGUI(loja, usuario, usuarioGUI, bibliotecaGUI, carrinhoGUI).setVisible(true);
             }
         });
     }

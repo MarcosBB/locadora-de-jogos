@@ -7,9 +7,13 @@ public class MenuGUI extends JFrame {
     protected UsuarioGUI usuarioGUI;
     protected BibliotecaGUI bibliotecaGUI;
 
-    public MenuGUI(Usuario usuario, Loja loja) {
+    public MenuGUI(Usuario usuario, Loja loja, UsuarioGUI usuarioGUI, BibliotecaGUI bibliotecaGUI,
+            CarrinhoGUI carrinhoGUI) {
         this.usuario = usuario;
         this.loja = loja;
+        this.usuarioGUI = usuarioGUI;
+        this.bibliotecaGUI = bibliotecaGUI;
+        this.carrinhoGUI = carrinhoGUI;
 
         JMenuBar menuBar = new JMenuBar();
 
