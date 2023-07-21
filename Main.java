@@ -23,7 +23,8 @@ public class Main {
         }
 
         else if (s == "Gênero") {
-            System.out.println("Digite uma das opções de gênero a seguir: \n {Acao, Aventura, Casual, Simulacao, RPG, Plataforma}");
+            System.out.println(
+                    "Digite uma das opções de gênero a seguir: \n {Acao, Aventura, Casual, Simulacao, RPG, Plataforma}");
             scanner.nextLine();
             showGameList(l.Busca(scanner.next()));
         }
@@ -36,8 +37,7 @@ public class Main {
         else if (s == "Adicionar ao carrinho") {
             System.out.println("Digite o número do jogo:");
             int x = InputUtil.positiveInteger(scanner) - 1;
-            if(x < l.NumeroDeOpcoes())
-            {
+            if (x < l.NumeroDeOpcoes()) {
                 u.adicionarJogoNoCarrinho(l.EscolherJogo(x));
             }
         }
@@ -45,7 +45,8 @@ public class Main {
         else if (s == "Retirar do carrinho") {
             System.out.println("Digite o número do jogo:");
             u.removerJogoNoCarrinho(
-                    u.mostrarJogosNoCarrinho().get(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
+                    u.mostrarJogosNoCarrinho()
+                            .get(InputUtil.integerInRange(1, u.mostrarJogosNoCarrinho().size(), scanner) - 1));
         }
 
         else if (s == "Jogar algum jogo") {
@@ -98,7 +99,7 @@ public class Main {
                 String genero = txtscanner.nextLine();
                 String preco = txtscanner.nextLine();
 
-                //System.out.println(nome + genero + preco);
+                // System.out.println(nome + genero + preco);
 
                 try {
                     produtora.criarJogo(nome, genero, Float.parseFloat(preco));
@@ -115,7 +116,7 @@ public class Main {
         Page PAGE = Page.HOME;
         Scanner scanner = new Scanner(System.in);
 
-        Usuario user = new Usuario();
+        Usuario user = new Usuario("João", 18, "joaozinhozikadopantano@gmail.com");
         Loja loja = new Loja("Loja LP2", 711230911);
 
         loja.adicionarJogosProdutora(produtora);
@@ -139,12 +140,10 @@ public class Main {
             if (PAGE == Page.ACCOUNT) {
                 title("Essa é sua conta");
                 String chosen = options(List.of("Ver meus jogos", "Adicionar dinheiro", "Voltar"), scanner);
-                if (chosen == "Ver meus jogos") 
-                {
+                if (chosen == "Ver meus jogos") {
                     showGameList(user.getBiblioteca());
                     PAGE = Page.GAMES;
-                }
-                else if (chosen == "Adicionar dinheiro")
+                } else if (chosen == "Adicionar dinheiro")
                     input(chosen, user, loja, scanner);
                 else if (chosen == "Voltar")
                     PAGE = Page.HOME;
@@ -153,7 +152,7 @@ public class Main {
             if (PAGE == Page.STORE) {
                 title("Loja de jogos LP2");
                 String chosen = options(List.of("Ver jogos", "Ver Carrinho", "Voltar"), scanner);
-                if (chosen == "Ver jogos") 
+                if (chosen == "Ver jogos")
                     PAGE = Page.GAMEFILTER;
                 else if (chosen == "Ver Carrinho") {
                     showGameList(user.mostrarJogosNoCarrinho());
@@ -203,7 +202,7 @@ public class Main {
             if (PAGE == Page.GAMES) {
                 title("Seus jogos");
                 String chosen = options(List.of("Jogar algum jogo", "Voltar"), scanner);
-                if (chosen == "Jogar algum jogo") 
+                if (chosen == "Jogar algum jogo")
                     input(chosen, user, loja, scanner);
                 else if (chosen == "Voltar")
                     PAGE = Page.ACCOUNT;

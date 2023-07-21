@@ -9,24 +9,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LojaGUI extends MenuGUI {
-    public LojaGUI(Loja loja, Usuario usuario) {
-        super(usuario, loja);
+    public LojaGUI(Loja loja, Usuario usuario, UsuarioGUI usuarioGUI, BibliotecaGUI bibliotecaGUI,
+            CarrinhoGUI carrinhoGUI) {
+        super(usuario, loja, usuarioGUI, bibliotecaGUI, carrinhoGUI);
         List<Joguin> jogosDisponiveis = loja.getJogosDisponiveis();
 
         setTitle("Loja de Jogos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(600, 300);
         setLocationRelativeTo(null);
 
         // Criação da tabela com os jogos
-        String[] colunas = { "Nome", "Preço", "Adicionar ao Carrinho" };
+        String[] colunas = { "Nome", "Genero", "Preço", "Adicionar ao Carrinho" };
         DefaultTableModel model = new DefaultTableModel(colunas, 0);
         for (Joguin jogo : jogosDisponiveis) {
-            model.addRow(new Object[] { jogo.getNome(), jogo.getPreco(), "Adicionar" });
+            model.addRow(new Object[] { jogo.getNome(), jogo.getGenero(), jogo.getPreco(), "Adicionar" });
         }
 
         JTable table = new JTable(model);
-        TableColumn buttonColumn = table.getColumnModel().getColumn(2);
+        TableColumn buttonColumn = table.getColumnModel().getColumn(3);
         buttonColumn.setCellRenderer(new ButtonRenderer());
         buttonColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
 
