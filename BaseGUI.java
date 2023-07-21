@@ -5,8 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BaseGUI extends JFrame {
-    private Usuario usuario;
-    private Loja loja;
+    protected Usuario usuario;
+    protected Loja loja;
+    private CarrinhoGUI carrinhoGUI;
 
     public BaseGUI(Usuario usuario, Loja loja) {
         this.usuario = usuario;
@@ -25,9 +26,9 @@ public class BaseGUI extends JFrame {
 
         // Create Store menu with sub-menu Catálogo and Carrinho
         JMenu storeMenu = new JMenu("Loja");
-        JMenuItem catalogoMenuItem = new JMenuItem("Catálogo");
+        JMenuItem BuscarJogoMenuItem = new JMenuItem("Buscar Jogo");
         JMenuItem carrinhoMenuItem = new JMenuItem("Carrinho");
-        storeMenu.add(catalogoMenuItem);
+        storeMenu.add(BuscarJogoMenuItem);
         storeMenu.add(carrinhoMenuItem);
         menuBar.add(storeMenu);
 
@@ -36,8 +37,17 @@ public class BaseGUI extends JFrame {
 
         carrinhoMenuItem.addActionListener(e -> {
             // Open the shopping cart page
-            new CarrinhoGUI(usuario, loja).setVisible(true);
+            showCarrinho();
         });
+    }
+
+    private void showCarrinho() {
+        if (carrinhoGUI == null) {
+            carrinhoGUI = new CarrinhoGUI(usuario, loja);
+        } else {
+            carrinhoGUI.updateCartContent();
+        }
+        carrinhoGUI.setVisible(true);
     }
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
@@ -91,6 +101,9 @@ public class BaseGUI extends JFrame {
             usuario.adicionarJogoNoCarrinho(jogo);
             JOptionPane.showMessageDialog(BaseGUI.this,
                     "Jogo \"" + jogo.getNome() + "\" adicionado ao carrinho!");
+
+            if (carrinhoGUI != null)
+                carrinhoGUI.updateCartContent();
         }
 
         public boolean stopCellEditing() {
